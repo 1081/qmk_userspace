@@ -271,8 +271,8 @@
 
 // Layer Modifiers
 #define LA_SYM MO(_SYM)
-#define LA_NAV MO(_NAV)
 #define LA_NUM MO(_NUM)
+#define LA_NAV MO(_NAV)
 
 // Mac Shortcuts (from: https://github.com/bsag/qmk_custom/blob/main/mini3x5/keycodes.h#L25)
 #define M_UNDO G(DE_Z)
@@ -316,26 +316,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // clang-format off
 
     [_DEF] = LAYOUT_split_3x5_3(
-        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    SW_WIN,
-        KC_A,    KC_R,    KC_S,    KC_T,    KC_G,          KC_M,    KC_N,    KC_E,    KC_I,    KC_O,
-        KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    KC_COMM, DE_DOT,  DE_UNDS,
+        DE_Q,    DE_W,    DE_F,    DE_P,    DE_B,          DE_J,    DE_L,    DE_U,    DE_Y,    SW_WIN,
+        DE_A,    DE_R,    DE_S,    DE_T,    DE_G,          DE_M,    DE_N,    DE_E,    DE_I,    DE_O,
+        DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,          DE_K,    DE_H,    DE_COMM, DE_DOT,  DE_UNDS,
                           LA_SYM,  LA_NUM,  LA_NAV,        OS_SHFT, KC_SPC,  KC_BSPC
     ),
     [_NAV] = LAYOUT_split_3x5_3(
         KC_PSCR, HOME,    KC_UP,   END,     KC_ESC,        HOME,    KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX,
         M_FIND,  KC_LEFT, KC_DOWN, KC_RGHT, KC_TAB,        M_UNDO,  OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
-        M_SELA,  M_CUT  , M_COPY,  M_PSTE,  KC_ENT,        M_SAVE,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                          _______, _______, _______,       XXXXXXX, BACK   , FWD
+        M_SELA,  M_CUT  , M_COPY,  M_PSTE,  KC_ENT,        M_SAVE,  BACK,    FWD,     XXXXXXX, XXXXXXX,
+                          _______, _______, _______,       XXXXXXX, XXXXXXX, KC_DEL
     ),
     [_SYM] = LAYOUT_split_3x5_3(
         DE_QUOT, DE_LBRC, DE_RBRC, DE_PLUS, DE_ASTR,       DE_TILD, DE_BSLS, DE_PIPE, DE_AMPR, XXXXXXX,
-        DE_DQUO, DE_LPRN, DE_RPRN, DE_MINS, DE_SLSH,       DE_AT  , _______, _______, _______, _______,
+        DE_DQUO, DE_LPRN, DE_RPRN, DE_MINS, DE_SLSH,       DE_AT  , OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
         DE_GRV , DE_LCBR, DE_RCBR, DE_EQL , DE_HASH,       DE_LABK, DE_RABK, DE_QUES, DE_EXLM, XXXXXXX,
                           _______, _______, _______,       XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_NUM] = LAYOUT_split_3x5_3(
         XXXXXXX,  DE_7,   DE_8,    DE_9,    DE_COMM,       DE_SECT, DE_ADIA, DE_UDIA, DE_ODIA, DE_SS,
-        XXXXXXX,  DE_4,   DE_5,    DE_6,    DE_0,          DE_CIRC, _______, _______, _______, _______,
+        XXXXXXX,  DE_4,   DE_5,    DE_6,    DE_0,          DE_CIRC, OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
         XXXXXXX,  DE_1,   DE_2,    DE_3,    DE_DOT,        DE_DLR,  DE_EURO, DE_PERC, DE_DEG,  DE_MICR,
                           _______, _______, _______,       OS_SHFT, XXXXXXX, XXXXXXX
     ),
