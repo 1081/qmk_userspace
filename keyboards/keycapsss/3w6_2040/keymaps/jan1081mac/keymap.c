@@ -259,13 +259,13 @@
 
 
 // from callum's keymap (https://github.com/qmk/qmk_firmware/blob/user-keymaps-still-present/users/callum/callum.c)
-#define HOME G(KC_LEFT)     // moving the cursor to the beginning of the line
-#define END G(KC_RGHT)      // moving the cursor to the end of the line
-#define FWD G(KC_RBRC)      // browser forward in history
-#define BACK G(KC_LBRC)     // browser back in history
-#define TABL G(S(KC_LBRC))  // ?
-#define TABR G(S(KC_RBRC))  // ?
-#define SPCL A(G(KC_LEFT))  // ?
+#define HOME  G(KC_LEFT)    // moving the cursor to the beginning of the line
+#define END   G(KC_RGHT)    // moving the cursor to the end of the line
+// #define FWD   G(KC_RBRC)    // browser forward in history
+// #define BACK  G(KC_LBRC)    // browser back in history
+#define TABL  G(S(KC_LBRC)) // ?
+#define TABR  G(S(KC_RBRC)) // ?
+#define SPCL  A(G(KC_LEFT)) // ?
 #define SPC_R A(G(KC_RGHT)) // ?
 
 
@@ -281,7 +281,7 @@
 #define M_PSTE G(DE_V)
 #define M_SELA G(DE_A)
 #define M_FIND G(DE_F)
-#define M_SAVE G(DE_F)
+#define M_SAVE G(DE_S)
 // #define TAB_L G(S(KC_LBRC))
 // #define TAB_R G(S(KC_RBRC))
 // #define WS_L A(S(KC_LEFT))  // select word left
@@ -293,8 +293,8 @@
 
 enum layers {
     _DEF,
-    _SYM,
     _NAV,
+    _SYM,
     _NUM,
     _FNU,
 };
@@ -324,7 +324,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     [_NAV] = LAYOUT_split_3x5_3(
         KC_PSCR, HOME,    KC_UP,   END,     KC_ESC,        HOME,    KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX,
         M_FIND,  KC_LEFT, KC_DOWN, KC_RGHT, KC_TAB,        M_UNDO,  OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
-        M_SELA,  M_CUT  , M_COPY,  M_PSTE,  KC_ENT,        M_SAVE,  BACK,    FWD,     XXXXXXX, XXXXXXX,
+        M_SELA,  M_CUT  , M_COPY,  M_PSTE,  KC_ENT,        M_SAVE,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                           _______, _______, _______,       XXXXXXX, XXXXXXX, KC_DEL
     ),
     [_SYM] = LAYOUT_split_3x5_3(
@@ -351,8 +351,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool is_oneshot_cancel_key(uint16_t keycode) {
     switch (keycode) {
-    case LA_SYM:
     case LA_NAV:
+    case LA_SYM:
     case LA_NUM:
         return true;
     default:
@@ -362,8 +362,8 @@ bool is_oneshot_cancel_key(uint16_t keycode) {
 
 bool is_oneshot_ignored_key(uint16_t keycode) {
     switch (keycode) {
-    case LA_SYM:
     case LA_NAV:
+    case LA_SYM:
     case LA_NUM:
     case KC_LSFT:
     case OS_SHFT:
@@ -381,8 +381,8 @@ bool sw_lang_active = false;
 
 oneshot_state os_shft_state = os_up_unqueued;
 oneshot_state os_ctrl_state = os_up_unqueued;
-oneshot_state os_alt_state = os_up_unqueued;
-oneshot_state os_cmd_state = os_up_unqueued;
+oneshot_state os_alt_state  = os_up_unqueued;
+oneshot_state os_cmd_state  = os_up_unqueued;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     update_swapper(
@@ -414,6 +414,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return true;
 }
 
-layer_state_t layer_state_set_user(layer_state_t state) {
-    return update_tri_layer_state(state, _SYM, _NAV, _NUM);
-}
+// --- not yet used:
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     return update_tri_layer_state(state, _NAV, _SYM, _FNU);
+// }
