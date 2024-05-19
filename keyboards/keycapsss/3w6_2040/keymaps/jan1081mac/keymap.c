@@ -6,7 +6,7 @@
 #include QMK_KEYBOARD_H
 
 // #include "keymap_german.h"
-// #include "keymap_german_mac_iso.h"
+#include "keymap_german_mac_iso.h"
 
 // macOS DE
 #include "keycodes.h"
@@ -14,20 +14,20 @@
 // #define DE_ODIA KC_SCLN // Ö
 // #define DE_ADIA KC_QUOT // Ä
 
-#define DE_LPRN S(DE_8)    // (
-#define DE_RPRN S(DE_9)    // )
+// #define DE_LPRN S(DE_8)    // (
+// #define DE_RPRN S(DE_9)    // )
 
-#define DE_LBRC A(DE_5)    // [
-#define DE_RBRC A(DE_6)    // ]
+// #define DE_LBRC A(DE_5)    // [
+// #define DE_RBRC A(DE_6)    // ]
 
-#define DE_LCBR A(DE_8)    // {
-#define DE_RCBR A(DE_9)    // }
+// #define DE_LCBR A(DE_8)    // {
+// #define DE_RCBR A(DE_9)    // }
 
-#define DE_PIPE A(DE_7) // |
+// #define DE_PIPE A(DE_7) // |
 
-#define DE_QUOT S(DE_HASH) // '
-#define DE_DQUO S(DE_2)    // "
-#define DE_GRV  S(DE_ACUT) // ` (dead)
+// #define DE_QUOT S(DE_HASH) // '
+// #define DE_DQUO S(DE_2)    // "
+// #define DE_GRV  S(DE_ACUT) // ` (dead)
 
 
 
