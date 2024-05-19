@@ -258,21 +258,37 @@
 #include "swapper.h"
 
 
-// ?
-#define HOME G(KC_LEFT)
-#define END G(KC_RGHT)
-#define FWD G(KC_RBRC)
-#define BACK G(KC_LBRC)
-#define TABL G(S(KC_LBRC))
-#define TABR G(S(KC_RBRC))
-#define SPCL A(G(KC_LEFT))
-#define SPC_R A(G(KC_RGHT))
+// from callum's keymap (https://github.com/qmk/qmk_firmware/blob/user-keymaps-still-present/users/callum/callum.c)
+#define HOME G(KC_LEFT)     // moving the cursor to the beginning of the line
+#define END G(KC_RGHT)      // moving the cursor to the end of the line
+#define FWD G(KC_RBRC)      // browser forward in history
+#define BACK G(KC_LBRC)     // browser back in history
+#define TABL G(S(KC_LBRC))  // ?
+#define TABR G(S(KC_RBRC))  // ?
+#define SPCL A(G(KC_LEFT))  // ?
+#define SPC_R A(G(KC_RGHT)) // ?
 
 
 // Layer Modifiers
 #define LA_SYM MO(_SYM)
 #define LA_NAV MO(_NAV)
 #define LA_NUM MO(_NUM)
+
+// Mac Shortcuts (from: https://github.com/bsag/qmk_custom/blob/main/mini3x5/keycodes.h#L25)
+#define M_UNDO G(DE_Z)
+#define M_CUT  G(DE_X)
+#define M_COPY G(DE_C)
+#define M_PSTE G(DE_V)
+#define M_SELA G(DE_A)
+#define M_FIND G(DE_F)
+#define M_SAVE G(DE_F)
+// #define TAB_L G(S(KC_LBRC))
+// #define TAB_R G(S(KC_RBRC))
+// #define WS_L A(S(KC_LEFT))  // select word left
+// #define WS_R A(S(KC_RIGHT)) // select word right
+// #define W_L A(KC_LEFT)      // move word left
+// #define W_R A(KC_RIGHT)     // move word right
+// #define LAU LGUI(KC_SPC)    // launcher (cmd+spc)
 
 
 enum layers {
@@ -291,8 +307,8 @@ enum keycodes {
     OS_ALT,
     OS_CMD,
 
-    SW_WIN,  // Switch to next window         (cmd-tab)
-    SW_LANG, // Switch to next input language (ctl-spc)
+    SW_WIN,  // Switch to next window         (cmd-tab) --> TODO test
+    SW_LANG, // Switch to next input language (ctl-spc) --> TODO delete
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -300,34 +316,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     // clang-format off
 
     [_DEF] = LAYOUT_split_3x5_3(
-        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    XXXXXXX,
+        KC_Q,    KC_W,    KC_F,    KC_P,    KC_B,          KC_J,    KC_L,    KC_U,    KC_Y,    SW_WIN,
         KC_A,    KC_R,    KC_S,    KC_T,    KC_G,          KC_M,    KC_N,    KC_E,    KC_I,    KC_O,
         KC_Z,    KC_X,    KC_C,    KC_D,    KC_V,          KC_K,    KC_H,    KC_COMM, DE_DOT,  DE_UNDS,
                           LA_SYM,  LA_NUM,  LA_NAV,        OS_SHFT, KC_SPC,  KC_BSPC
     ),
     [_NAV] = LAYOUT_split_3x5_3(
-        KC_PSCR, XXXXXXX, KC_UP,   XXXXXXX, KC_ESC,        XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX,
-        XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, KC_TAB,        XXXXXXX, OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
-        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_ENT,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                          XXXXXXX, XXXXXXX, _______,       XXXXXXX, XXXXXXX, KC_DEL
+        KC_PSCR, HOME,    KC_UP,   END,     KC_ESC,        HOME,    KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX,
+        M_FIND,  KC_LEFT, KC_DOWN, KC_RGHT, KC_TAB,        M_UNDO,  OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
+        M_SELA,  M_CUT  , M_COPY,  M_PSTE,  KC_ENT,        M_SAVE,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                          _______, _______, _______,       XXXXXXX, BACK   , FWD
     ),
     [_SYM] = LAYOUT_split_3x5_3(
         DE_QUOT, DE_LBRC, DE_RBRC, DE_PLUS, DE_ASTR,       DE_TILD, DE_BSLS, DE_PIPE, DE_AMPR, XXXXXXX,
         DE_DQUO, DE_LPRN, DE_RPRN, DE_MINS, DE_SLSH,       DE_AT  , _______, _______, _______, _______,
         DE_GRV , DE_LCBR, DE_RCBR, DE_EQL , DE_HASH,       DE_LABK, DE_RABK, DE_QUES, DE_EXLM, XXXXXXX,
-                          _______, XXXXXXX, XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX
+                          _______, _______, _______,       XXXXXXX, XXXXXXX, XXXXXXX
     ),
     [_NUM] = LAYOUT_split_3x5_3(
         XXXXXXX,  DE_7,   DE_8,    DE_9,    DE_COMM,       DE_SECT, DE_ADIA, DE_UDIA, DE_ODIA, DE_SS,
         XXXXXXX,  DE_4,   DE_5,    DE_6,    DE_0,          DE_CIRC, _______, _______, _______, _______,
         XXXXXXX,  DE_1,   DE_2,    DE_3,    DE_DOT,        DE_DLR,  DE_EURO, DE_PERC, DE_DEG,  DE_MICR,
-                          XXXXXXX, _______, XXXXXXX,       OS_SHFT, XXXXXXX, XXXXXXX
+                          _______, _______, _______,       OS_SHFT, XXXXXXX, XXXXXXX
     ),
     [_FNU] = LAYOUT_split_3x5_3(
         XXXXXXX,  KC_F7,  KC_F8,   KC_F9,   KC_F12,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX,  KC_F4,  KC_F5,   KC_F6,   KC_F11,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX,  KC_F1,  KC_F2,   KC_F3,   KC_F10,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                          XXXXXXX, _______, XXXXXXX,       XXXXXXX, XXXXXXX, XXXXXXX
+                          _______, _______, _______,       XXXXXXX, XXXXXXX, XXXXXXX
     )
     // clang-format on
 };
