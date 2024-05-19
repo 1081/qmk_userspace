@@ -16,8 +16,10 @@
 
 #define DE_LPRN S(DE_8)    // (
 #define DE_RPRN S(DE_9)    // )
+
 #define DE_LBRC A(DE_5)    // [
 #define DE_RBRC A(DE_6)    // ]
+
 #define DE_LCBR A(DE_8)    // {
 #define DE_RCBR A(DE_9)    // }
 
