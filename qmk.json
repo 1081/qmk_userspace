@@ -1,4 +1,9 @@
 {
     "userspace_version": "1.0",
-    "build_targets": []
+    "build_targets": [
+        [
+            "keycapsss/3w6_2040",
+            "jan1081mac"
+        ]
+    ]
 }
