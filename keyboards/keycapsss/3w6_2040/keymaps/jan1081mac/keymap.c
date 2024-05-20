@@ -7,89 +7,6 @@
 #include "oneshot.h"
 #include "swapper.h"
 
-// --- SETUP FOR PC LAYOUT
-// #include "keymap_german.h" // <-- UNCOMMENT THIS LINE
-// --- Aliases:
-// --- DE_CIRC KC_GRV        // ^ (dead)
-// --- DE_1    KC_1          // 1
-// --- DE_2    KC_2          // 2
-// --- DE_3    KC_3          // 3
-// --- DE_4    KC_4          // 4
-// --- DE_5    KC_5          // 5
-// --- DE_6    KC_6          // 6
-// --- DE_7    KC_7          // 7
-// --- DE_8    KC_8          // 8
-// --- DE_9    KC_9          // 9
-// --- DE_0    KC_0          // 0
-// --- DE_SS   KC_MINS       // ß
-// --- DE_ACUT KC_EQL        // ´ (dead)
-// --- DE_Q    KC_Q          // Q
-// --- DE_W    KC_W          // W
-// --- DE_E    KC_E          // E
-// --- DE_R    KC_R          // R
-// --- DE_T    KC_T          // T
-// --- DE_Z    KC_Y          // Z
-// --- DE_U    KC_U          // U
-// --- DE_I    KC_I          // I
-// --- DE_O    KC_O          // O
-// --- DE_P    KC_P          // P
-// --- DE_UDIA KC_LBRC       // Ü
-// --- DE_PLUS KC_RBRC       // +
-// --- DE_A    KC_A          // A
-// --- DE_S    KC_S          // S
-// --- DE_D    KC_D          // D
-// --- DE_F    KC_F          // F
-// --- DE_G    KC_G          // G
-// --- DE_H    KC_H          // H
-// --- DE_J    KC_J          // J
-// --- DE_K    KC_K          // K
-// --- DE_L    KC_L          // L
-// --- DE_ODIA KC_SCLN       // Ö
-// --- DE_ADIA KC_QUOT       // Ä
-// --- DE_HASH KC_NUHS       // #
-// --- DE_LABK KC_NUBS       // <
-// --- DE_Y    KC_Z          // Y
-// --- DE_X    KC_X          // X
-// --- DE_C    KC_C          // C
-// --- DE_V    KC_V          // V
-// --- DE_B    KC_B          // B
-// --- DE_N    KC_N          // N
-// --- DE_M    KC_M          // M
-// --- DE_COMM KC_COMM       // ,
-// --- DE_DOT  KC_DOT        // .
-// --- DE_MINS KC_SLSH       // -
-// --- DE_DEG  S(DE_CIRC)    // °
-// --- DE_EXLM S(DE_1)       // !
-// --- DE_DQUO S(DE_2)       // "
-// --- DE_SECT S(DE_3)       // §
-// --- DE_DLR  S(DE_4)       // $
-// --- DE_PERC S(DE_5)       // %
-// --- DE_AMPR S(DE_6)       // &
-// --- DE_SLSH S(DE_7)       // /
-// --- DE_LPRN S(DE_8)       // (
-// --- DE_RPRN S(DE_9)       // )
-// --- DE_EQL  S(DE_0)       // =
-// --- DE_QUES S(DE_SS)      // ?
-// --- DE_GRV  S(DE_ACUT)    // ` (dead)
-// --- DE_ASTR S(DE_PLUS)    // *
-// --- DE_QUOT S(DE_HASH)    // '
-// --- DE_RABK S(DE_LABK)    // >
-// --- DE_SCLN S(DE_COMM)    // ;
-// --- DE_COLN S(DE_DOT)     // :
-// --- DE_UNDS S(DE_MINS)    // _
-// --- DE_SUP2 ALGR(DE_2)    // ²
-// --- DE_SUP3 ALGR(DE_3)    // ³
-// --- DE_LCBR ALGR(DE_7)    // {
-// --- DE_LBRC ALGR(DE_8)    // [
-// --- DE_RBRC ALGR(DE_9)    // ]
-// --- DE_RCBR ALGR(DE_0)    // }
-// --- DE_BSLS ALGR(DE_SS)   // (backslash)
-// --- DE_AT   ALGR(DE_Q)    // @
-// --- DE_EURO ALGR(DE_E)    // €
-// --- DE_TILD ALGR(DE_PLUS) // ~
-// --- DE_PIPE ALGR(DE_LABK) // |
-// --- DE_MICR ALGR(DE_M)    // µ
-
 // --- SETUP FOR MAC LAYOUT
 #include "keymap_german_mac_iso.h" // <-- UNCOMMENT THIS LINE
 // --- Aliases:
@@ -244,6 +161,91 @@
 // --- DE_DIV  S(A(DE_DOT))  // ÷
 // --- DE_MDSH S(A(DE_MINS)) // —
 
+
+// --- SETUP FOR PC LAYOUT
+// #include "keymap_german.h" // <-- UNCOMMENT THIS LINE
+// --- Aliases:
+// --- DE_CIRC KC_GRV        // ^ (dead)
+// --- DE_1    KC_1          // 1
+// --- DE_2    KC_2          // 2
+// --- DE_3    KC_3          // 3
+// --- DE_4    KC_4          // 4
+// --- DE_5    KC_5          // 5
+// --- DE_6    KC_6          // 6
+// --- DE_7    KC_7          // 7
+// --- DE_8    KC_8          // 8
+// --- DE_9    KC_9          // 9
+// --- DE_0    KC_0          // 0
+// --- DE_SS   KC_MINS       // ß
+// --- DE_ACUT KC_EQL        // ´ (dead)
+// --- DE_Q    KC_Q          // Q
+// --- DE_W    KC_W          // W
+// --- DE_E    KC_E          // E
+// --- DE_R    KC_R          // R
+// --- DE_T    KC_T          // T
+// --- DE_Z    KC_Y          // Z
+// --- DE_U    KC_U          // U
+// --- DE_I    KC_I          // I
+// --- DE_O    KC_O          // O
+// --- DE_P    KC_P          // P
+// --- DE_UDIA KC_LBRC       // Ü
+// --- DE_PLUS KC_RBRC       // +
+// --- DE_A    KC_A          // A
+// --- DE_S    KC_S          // S
+// --- DE_D    KC_D          // D
+// --- DE_F    KC_F          // F
+// --- DE_G    KC_G          // G
+// --- DE_H    KC_H          // H
+// --- DE_J    KC_J          // J
+// --- DE_K    KC_K          // K
+// --- DE_L    KC_L          // L
+// --- DE_ODIA KC_SCLN       // Ö
+// --- DE_ADIA KC_QUOT       // Ä
+// --- DE_HASH KC_NUHS       // #
+// --- DE_LABK KC_NUBS       // <
+// --- DE_Y    KC_Z          // Y
+// --- DE_X    KC_X          // X
+// --- DE_C    KC_C          // C
+// --- DE_V    KC_V          // V
+// --- DE_B    KC_B          // B
+// --- DE_N    KC_N          // N
+// --- DE_M    KC_M          // M
+// --- DE_COMM KC_COMM       // ,
+// --- DE_DOT  KC_DOT        // .
+// --- DE_MINS KC_SLSH       // -
+// --- DE_DEG  S(DE_CIRC)    // °
+// --- DE_EXLM S(DE_1)       // !
+// --- DE_DQUO S(DE_2)       // "
+// --- DE_SECT S(DE_3)       // §
+// --- DE_DLR  S(DE_4)       // $
+// --- DE_PERC S(DE_5)       // %
+// --- DE_AMPR S(DE_6)       // &
+// --- DE_SLSH S(DE_7)       // /
+// --- DE_LPRN S(DE_8)       // (
+// --- DE_RPRN S(DE_9)       // )
+// --- DE_EQL  S(DE_0)       // =
+// --- DE_QUES S(DE_SS)      // ?
+// --- DE_GRV  S(DE_ACUT)    // ` (dead)
+// --- DE_ASTR S(DE_PLUS)    // *
+// --- DE_QUOT S(DE_HASH)    // '
+// --- DE_RABK S(DE_LABK)    // >
+// --- DE_SCLN S(DE_COMM)    // ;
+// --- DE_COLN S(DE_DOT)     // :
+// --- DE_UNDS S(DE_MINS)    // _
+// --- DE_SUP2 ALGR(DE_2)    // ²             // different from mac keys
+// --- DE_SUP3 ALGR(DE_3)    // ³             // different from mac keys
+// --- DE_LCBR ALGR(DE_7)    // {             // different from mac keys
+// --- DE_LBRC ALGR(DE_8)    // [             // different from mac keys
+// --- DE_RBRC ALGR(DE_9)    // ]             // different from mac keys
+// --- DE_RCBR ALGR(DE_0)    // }             // different from mac keys
+// --- DE_BSLS ALGR(DE_SS)   // (backslash)   // different from mac keys
+// --- DE_AT   ALGR(DE_Q)    // @             // different from mac keys
+// --- DE_EURO ALGR(DE_E)    // €             // different from mac keys
+// --- DE_TILD ALGR(DE_PLUS) // ~             // different from mac keys
+// --- DE_PIPE ALGR(DE_LABK) // |             // different from mac keys
+// --- DE_MICR ALGR(DE_M)    // µ             // different from mac keys
+
+
 // --- Symbols avilable in PC but not in MAC:
 // --- DE_SUP2 ALGR(DE_2)    // ²
 // --- DE_SUP3 ALGR(DE_3)    // ³
@@ -294,16 +296,41 @@
 // #define LAU LGUI(KC_SPC)    // launcher (cmd+spc)
 
 
+
+// --- Windows specific shortcuts start with "W_" (from:
+#define W_UNDO  C(DE_Z)
+#define W_CUT   C(DE_X)
+#define W_COPY  C(DE_C)
+#define W_PSTE  C(DE_V)
+#define W_SELA  C(DE_A)
+#define W_FIND  C(DE_F)
+#define W_SAVE  C(DE_S)
+// --- different from mac keys
+#define W_SUP2 ALGR(DE_2)    // ²
+#define W_SUP3 ALGR(DE_3)    // ³
+#define W_LCBR ALGR(DE_7)    // {
+#define W_LBRC ALGR(DE_8)    // [
+#define W_RBRC ALGR(DE_9)    // ]
+#define W_RCBR ALGR(DE_0)    // }
+#define W_BSLS ALGR(DE_SS)   // (backslash)
+#define W_AT   ALGR(DE_Q)    // @
+#define W_EURO ALGR(DE_E)    // €
+#define W_TILD ALGR(DE_PLUS) // ~
+#define W_PIPE ALGR(DE_LABK) // |
+#define W_MICR ALGR(DE_M)    // µ
+
+
+
 enum layers {
     _MAC_DEF, // Default Layer for Mac
-    _WIN_DEF, // Default Layer for Windows
     _MAC_NAV,
-    _WIN_NAV,
     _MAC_SYM,
-    _WIN_SYM,
-    _MAC_NUM,
     _WIN_NUM,
     _MAC_FNU,
+    _WIN_DEF, // Default Layer for Windows
+    _WIN_NAV,
+    _WIN_SYM,
+    _MAC_NUM,
     _WIN_FNU,
 };
 
@@ -333,47 +360,23 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,          DE_K,    DE_H,    DE_COMM, DE_DOT,  DE_UNDS,
                           M_SYM,   M_NUM,   M_NAV,         OS_SHFT, KC_SPC,  KC_BSPC
     ),
-    [_WIN_DEF] = LAYOUT_split_3x5_3(
-        _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-                          W_SYM,   W_NUM,   W_NAV,         _______, _______, _______
-    ),
     [_MAC_NAV] = LAYOUT_split_3x5_3(
         KC_PSCR, XXXXXXX, XXXXXXX, XXXXXXX, KC_ESC,        XXXXXXX, HOME,    KC_UP,   END,     XXXXXXX,
-        OS_ALT,  OS_CTRL, OS_CMD,  OS_SHFT, KC_TAB,        SW_WIN,  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,
+        OS_CTRL, OS_ALT,  OS_CMD,  OS_SHFT, KC_TAB,        SW_WIN,  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,
         M_SELA,  M_CUT,   M_COPY,  M_PSTE,  KC_ENT,        M_UNDO,  M_SAVE,  M_FIND,  XXXXXXX, M_RGPT,
                           _______, _______, _______,       OS_SHFT, M_RCAST, KC_DEL
     ),
-    [_WIN_NAV] = LAYOUT_split_3x5_3(
-        KC_PSCR, XXXXXXX, XXXXXXX, XXXXXXX, KC_ESC,        XXXXXXX, HOME,    KC_UP,   END,     XXXXXXX,
-        OS_ALT,  OS_CTRL, OS_CMD,  OS_SHFT, KC_TAB,        SW_WIN,  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,
-        W_SELA,  W_CUT,   W_COPY,  W_PSTE,  KC_ENT,        W_UNDO,  W_SAVE,  W_FIND,  XXXXXXX, XXXXXXX,
-                          _______, _______, _______,       OS_SHFT, XXXXXXX, KC_DEL
-    ),
     [_MAC_SYM] = LAYOUT_split_3x5_3(
         DE_QUOT, DE_LBRC, DE_RBRC, DE_PLUS, DE_ASTR,       DE_TILD, DE_BSLS, DE_PIPE, DE_AMPR, XXXXXXX,
-        DE_DQUO, DE_LPRN, DE_RPRN, DE_MINS, DE_SLSH,       DE_AT,   OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
+        DE_DQUO, DE_LPRN, DE_RPRN, DE_MINS, DE_SLSH,       DE_AT,   OS_SHFT, OS_CMD,  OS_ALT,  OS_CTRL,
         DE_GRV,  DE_LCBR, DE_RCBR, DE_EQL,  DE_HASH,       DE_LABK, DE_RABK, DE_QUES, DE_EXLM, XXXXXXX,
                           _______, _______, _______,       OS_SHFT, XXXXXXX, XXXXXXX
     ),
-    [_WIN_SYM] = LAYOUT_split_3x5_3(
-        DE_W,    _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-                          _______, _______, _______,       _______, _______, _______
-    ),
     [_MAC_NUM] = LAYOUT_split_3x5_3(
         XXXXXXX,  DE_7,   DE_8,    DE_9,    DE_COMM,       DE_SECT, DE_ADIA, DE_UDIA, DE_ODIA, DE_SS,
-        XXXXXXX,  DE_4,   DE_5,    DE_6,    DE_0,          DE_CIRC, OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
+        XXXXXXX,  DE_4,   DE_5,    DE_6,    DE_0,          DE_CIRC, OS_SHFT, OS_CMD,  OS_ALT,  OS_CTRL,
         XXXXXXX,  DE_1,   DE_2,    DE_3,    DE_DOT,        DE_DLR,  DE_EURO, DE_PERC, DE_DEG,  DE_MICR,
                           _______, _______, _______,       OS_SHFT, M_FNU,  XXXXXXX
-    ),
-    [_WIN_NUM] = LAYOUT_split_3x5_3(
-        DE_W,    _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-                          _______, _______, _______,       _______, W_FNU, _______
     ),
     [_MAC_FNU] = LAYOUT_split_3x5_3(
         XXXXXXX,  KC_F7,  KC_F8,   KC_F9,   KC_F12,        XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, DF(_WIN_DEF),
@@ -381,11 +384,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  KC_F1,  KC_F2,   KC_F3,   KC_F10,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                           _______, _______, _______,       XXXXXXX, _______, XXXXXXX
     ),
+
+    // WINDOWS LAYOUT
+    [_WIN_DEF] = LAYOUT_split_3x5_3(
+        DE_Q,    DE_W,    DE_F,    DE_P,    DE_B,          DE_J,    DE_L,    DE_U,    DE_Y,    XXXXXXX,
+        DE_A,    DE_R,    DE_S,    DE_T,    DE_G,          DE_M,    DE_N,    DE_E,    DE_I,    DE_O,
+        DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,          DE_K,    DE_H,    DE_COMM, DE_DOT,  DE_UNDS,
+                          W_SYM,   W_NUM,   W_NAV,         OS_SHFT, KC_SPC,  KC_BSPC
+    ),
+    [_WIN_NAV] = LAYOUT_split_3x5_3(
+        KC_PSCR, XXXXXXX, XXXXXXX, XXXXXXX, KC_ESC,        XXXXXXX, HOME,    KC_UP,   END,     XXXXXXX,
+        OS_CMD,  OS_ALT,  OS_CTRL,  OS_SHFT, KC_TAB,        SW_WIN,  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,
+        W_SELA,  W_CUT,   W_COPY,  W_PSTE,  KC_ENT,        W_UNDO,  W_SAVE,  W_FIND,  XXXXXXX, XXXXXXX,
+                          _______, _______, _______,       OS_SHFT, XXXXXXX, KC_DEL
+    ),
+    [_WIN_SYM] = LAYOUT_split_3x5_3(
+        DE_QUOT, W_LBRC,  W_RBRC,  DE_PLUS, DE_ASTR,       W_TILD,  W_BSLS,  W_PIPE,  DE_AMPR, XXXXXXX,
+        DE_DQUO, DE_LPRN, DE_RPRN, DE_MINS, DE_SLSH,       W_AT,    OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,
+        DE_GRV,  W_LCBR,  W_RCBR,  DE_EQL,  DE_HASH,       DE_LABK, DE_RABK, DE_QUES, DE_EXLM, XXXXXXX,
+                          _______, _______, _______,       OS_SHFT, XXXXXXX, XXXXXXX
+    ),
+    [_WIN_NUM] = LAYOUT_split_3x5_3(
+        W_SUP3,   DE_7,   DE_8,    DE_9,    DE_COMM,       DE_SECT, DE_ADIA, DE_UDIA, DE_ODIA, DE_SS,
+        W_SUP2,   DE_4,   DE_5,    DE_6,    DE_0,          DE_CIRC, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,
+        XXXXXXX,  DE_1,   DE_2,    DE_3,    DE_DOT,        DE_DLR,  W_EURO,  DE_PERC, DE_DEG,  W_MICR,
+                          _______, _______, _______,       OS_SHFT, W_FNU,   XXXXXXX
+    ),
     [_WIN_FNU] = LAYOUT_split_3x5_3(
-        DE_W,    _______, _______, _______, _______,       _______, _______, _______, _______, DF(_MAC_DEF),
-        _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-                          _______, _______, _______,       _______, _______, _______
+        XXXXXXX,  KC_F7,  KC_F8,   KC_F9,   KC_F12,        XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, DF(_MAC_DEF),
+        XXXXXXX,  KC_F4,  KC_F5,   KC_F6,   KC_F11,        XXXXXXX, SS_HELL, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX,  KC_F1,  KC_F2,   KC_F3,   KC_F10,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+                          _______, _______, _______,       XXXXXXX, _______, XXXXXXX
     )
 
     // clang-format on
