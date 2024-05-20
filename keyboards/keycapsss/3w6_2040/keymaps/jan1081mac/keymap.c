@@ -266,10 +266,14 @@
 #define SPC_R A(G(KC_RGHT)) // ?
 
 // --- Layer Modifiers
-#define LA_NAV MO(_NAV)
-#define LA_SYM MO(_SYM)
-#define LA_NUM MO(_NUM)
-#define LA_FNU MO(_FNU)
+#define LAM_NAV MO(_MAC_NAV) // Layer MAC
+#define LAM_SYM MO(_MAC_SYM)
+#define LAM_NUM MO(_MAC_NUM)
+#define LAM_FNU MO(_MAC_FNU)
+#define LAW_NAV MO(_WIN_NAV) // Layer WIN
+#define LAW_SYM MO(_WIN_SYM)
+#define LAW_NUM MO(_WIN_NUM)
+#define LAW_FNU MO(_WIN_FNU)
 
 // --- Mac specific shortcuts start with "M_" (from: https://github.com/bsag/qmk_custom/blob/main/mini3x5/keycodes.h#L25)
 #define M_UNDO  G(DE_Z)
@@ -291,8 +295,8 @@
 
 
 enum layers {
-    _MAC_DEF,
-    _WIN_DEF,
+    _MAC_DEF, // Default Layer for Mac
+    _WIN_DEF, // Default Layer for Windows
     _MAC_NAV,
     _WIN_NAV,
     _MAC_SYM,
@@ -327,13 +331,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         DE_Q,    DE_W,    DE_F,    DE_P,    DE_B,          DE_J,    DE_L,    DE_U,    DE_Y,    XXXXXXX,
         DE_A,    DE_R,    DE_S,    DE_T,    DE_G,          DE_M,    DE_N,    DE_E,    DE_I,    DE_O,
         DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,          DE_K,    DE_H,    DE_COMM, DE_DOT,  DE_UNDS,
-                          LA_SYM,  LA_NUM,  LA_NAV,        OS_SHFT, KC_SPC,  KC_BSPC
+                          LAM_SYM, LAM_NUM, LAM_NAV,       OS_SHFT, KC_SPC,  KC_BSPC
     ),
     [_WIN_DEF] = LAYOUT_split_3x5_3(
-        _______, DE_Q, DE_Q, DE_Q, DE_Q,                   _______, _______, _______, _______, _______,
+        DE_W, DE_Q, DE_Q, DE_Q, DE_Q,                      _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-                          _______, _______, _______,       _______, _______, _______
+                          LAW_SYM, LAW_NUM, LAW_NAV,       _______, _______, _______
     ),
     [_MAC_NAV] = LAYOUT_split_3x5_3(
         KC_PSCR, XXXXXXX, XXXXXXX, XXXXXXX, KC_ESC,        XXXXXXX, HOME,    KC_UP,   END,     XXXXXXX,
@@ -342,7 +346,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           _______, _______, _______,       OS_SHFT, M_RCAST, KC_DEL
     ),
     [_WIN_NAV] = LAYOUT_split_3x5_3(
-        _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
+        DE_W,    _______, _______, _______, _______,       _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
                           _______, _______, _______,       _______, _______, _______
@@ -354,7 +358,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           _______, _______, _______,       OS_SHFT, XXXXXXX, XXXXXXX
     ),
     [_WIN_SYM] = LAYOUT_split_3x5_3(
-        _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
+        DE_W,    _______, _______, _______, _______,       _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
                           _______, _______, _______,       _______, _______, _______
@@ -363,22 +367,22 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  DE_7,   DE_8,    DE_9,    DE_COMM,       DE_SECT, DE_ADIA, DE_UDIA, DE_ODIA, DE_SS,
         XXXXXXX,  DE_4,   DE_5,    DE_6,    DE_0,          DE_CIRC, OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
         XXXXXXX,  DE_1,   DE_2,    DE_3,    DE_DOT,        DE_DLR,  DE_EURO, DE_PERC, DE_DEG,  DE_MICR,
-                          _______, _______, _______,       OS_SHFT, LA_FNU,  XXXXXXX
+                          _______, _______, _______,       OS_SHFT, LAM_FNU,  XXXXXXX
     ),
     [_WIN_NUM] = LAYOUT_split_3x5_3(
+        DE_W,    _______, _______, _______, _______,       _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-        _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
-                          _______, _______, _______,       _______, _______, _______
+                          _______, _______, _______,       _______, LAW_FNU, _______
     ),
     [_MAC_FNU] = LAYOUT_split_3x5_3(
-        XXXXXXX,  KC_F7,  KC_F8,   KC_F9,   KC_F12,        XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, DF(MAC_DEF),
-        XXXXXXX,  KC_F4,  KC_F5,   KC_F6,   KC_F11,        XXXXXXX, SS_HELL, XXXXXXX, XXXXXXX, DF(WIN_DEF),
+        XXXXXXX,  KC_F7,  KC_F8,   KC_F9,   KC_F12,        XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, DF(_WIN_DEF),
+        XXXXXXX,  KC_F4,  KC_F5,   KC_F6,   KC_F11,        XXXXXXX, SS_HELL, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX,  KC_F1,  KC_F2,   KC_F3,   KC_F10,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                           _______, _______, _______,       XXXXXXX, _______, XXXXXXX
-    )
+    ),
     [_WIN_FNU] = LAYOUT_split_3x5_3(
-        _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
+        DE_W,    _______, _______, _______, _______,       _______, _______, _______, _______, DF(_MAC_DEF),
         _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
         _______, _______, _______, _______, _______,       _______, _______, _______, _______, _______,
                           _______, _______, _______,       _______, _______, _______
@@ -389,9 +393,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool is_oneshot_cancel_key(uint16_t keycode) {
     switch (keycode) {
-    case LA_NAV:
-    case LA_SYM:
-    case LA_NUM:
+    case LAM_NAV: // Mac
+    case LAM_SYM:
+    case LAM_NUM:
+    case LAW_NAV: // Win
+    case LAW_SYM:
+    case LAW_NUM:
         return true;
     default:
         return false;
@@ -400,9 +407,12 @@ bool is_oneshot_cancel_key(uint16_t keycode) {
 
 bool is_oneshot_ignored_key(uint16_t keycode) {
     switch (keycode) {
-    case LA_NAV:
-    case LA_SYM:
-    case LA_NUM:
+    case LAM_NAV: // Mac
+    case LAM_SYM:
+    case LAM_NUM:
+    case LAW_NAV: // Win
+    case LAW_SYM:
+    case LAW_NUM:
     case KC_LSFT:
     case OS_SHFT:
     case OS_CTRL:
