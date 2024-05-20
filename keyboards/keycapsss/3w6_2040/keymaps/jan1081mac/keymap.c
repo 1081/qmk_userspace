@@ -4,6 +4,8 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include QMK_KEYBOARD_H
+#include "oneshot.h"
+#include "swapper.h"
 
 // --- SETUP FOR PC LAYOUT
 // #include "keymap_german.h" // <-- UNCOMMENT THIS LINE
@@ -242,7 +244,6 @@
 // --- DE_DIV  S(A(DE_DOT))  // ÷
 // --- DE_MDSH S(A(DE_MINS)) // —
 
-
 // --- Symbols avilable in PC but not in MAC:
 // --- DE_SUP2 ALGR(DE_2)    // ²
 // --- DE_SUP3 ALGR(DE_3)    // ³
@@ -254,11 +255,7 @@
 // --> Language Specific Keycodes: https://github.com/qmk/qmk_firmware/tree/master/quantum/keymap_extras
 
 
-#include "oneshot.h"
-#include "swapper.h"
-
-
-// from callum's keymap (https://github.com/qmk/qmk_firmware/blob/user-keymaps-still-present/users/callum/callum.c)
+// --- From callum's keymap (https://github.com/qmk/qmk_firmware/blob/user-keymaps-still-present/users/callum/callum.c)
 #define HOME  G(KC_LEFT)    // moving the cursor to the beginning of the line
 #define END   G(KC_RGHT)    // moving the cursor to the end of the line
 // #define FWD   G(KC_RBRC)    // browser forward in history
@@ -268,21 +265,22 @@
 #define SPCL  A(G(KC_LEFT)) // ?
 #define SPC_R A(G(KC_RGHT)) // ?
 
-
 // --- Layer Modifiers
 #define LA_NAV MO(_NAV)
 #define LA_SYM MO(_SYM)
 #define LA_NUM MO(_NUM)
 #define LA_FNU MO(_FNU)
 
-// --- Mac Shortcuts (from: https://github.com/bsag/qmk_custom/blob/main/mini3x5/keycodes.h#L25)
-#define M_UNDO G(DE_Z)
-#define M_CUT  G(DE_X)
-#define M_COPY G(DE_C)
-#define M_PSTE G(DE_V)
-#define M_SELA G(DE_A)
-#define M_FIND G(DE_F)
-#define M_SAVE G(DE_S)
+// --- Mac specific shortcuts start with "M_" (from: https://github.com/bsag/qmk_custom/blob/main/mini3x5/keycodes.h#L25)
+#define M_UNDO  G(DE_Z)
+#define M_CUT   G(DE_X)
+#define M_COPY  G(DE_C)
+#define M_PSTE  G(DE_V)
+#define M_SELA  G(DE_A)
+#define M_FIND  G(DE_F)
+#define M_SAVE  G(DE_S)
+#define M_RCAST G(KC_SPC) // Raycast 
+#define M_RGPT  G(DE_DOT) // Raycast GPT
 // #define TAB_L G(S(KC_LBRC))
 // #define TAB_R G(S(KC_RBRC))
 // #define WS_L A(S(KC_LEFT))  // select word left
@@ -290,8 +288,7 @@
 // #define W_L A(KC_LEFT)      // move word left
 // #define W_R A(KC_RIGHT)     // move word right
 // #define LAU LGUI(KC_SPC)    // launcher (cmd+spc)
-#define M_RCAST G(KC_SPC) // Raycast 
-#define M_RGPT  G(DE_DOT) // Raycast GPT
+
 
 enum layers {
     _DEF,
@@ -303,7 +300,7 @@ enum layers {
 
 
 enum keycodes {
-    // Custom oneshot mod implementation with no timers.
+    // --- Custom oneshot mod implementation with no timers.
     OS_SHFT = SAFE_RANGE,
     OS_CTRL,
     OS_ALT,
@@ -311,21 +308,10 @@ enum keycodes {
 
     SW_WIN,  // Switch to next window         (cmd-tab) --> TODO test
     SW_LANG, // Switch to next input language (ctl-spc) --> TODO delete
+
+    SS_HELL, // SS = send string
+    SS_MAIL,
 };
-
-
-// --- Send Strings
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    switch (keycode) {
-        case SS_HELL:
-            if (record->event.pressed) {
-                SEND_STRING("Hello, world!\n");
-            }
-            return false;
-    }
-
-    return true;
-}
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -339,15 +325,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           LA_SYM,  LA_NUM,  LA_NAV,        OS_SHFT, KC_SPC,  KC_BSPC
     ),
     [_NAV] = LAYOUT_split_3x5_3(
-        KC_PSCR, xxxxxxx, xxxxxxx, xxxxxxx, KC_ESC,        XXXXXXX, HOME,    KC_UP,   END,     XXXXXXX,
+        KC_PSCR, XXXXXXX, XXXXXXX, XXXXXXX, KC_ESC,        XXXXXXX, HOME,    KC_UP,   END,     XXXXXXX,
         OS_ALT,  OS_CTRL, OS_CMD,  OS_SHFT, KC_TAB,        SW_WIN,  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,
-        M_SELA,  M_CUT  , M_COPY,  M_PSTE,  KC_ENT,        M_UNDO,  M_SAVE,  M_FIND,  XXXXXXX, M_RGPT,
+        M_SELA,  M_CUT,   M_COPY,  M_PSTE,  KC_ENT,        M_UNDO,  M_SAVE,  M_FIND,  XXXXXXX, M_RGPT,
                           _______, _______, _______,       OS_SHFT, M_RCAST, KC_DEL
     ),
     [_SYM] = LAYOUT_split_3x5_3(
         DE_QUOT, DE_LBRC, DE_RBRC, DE_PLUS, DE_ASTR,       DE_TILD, DE_BSLS, DE_PIPE, DE_AMPR, XXXXXXX,
-        DE_DQUO, DE_LPRN, DE_RPRN, DE_MINS, DE_SLSH,       DE_AT  , OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
-        DE_GRV , DE_LCBR, DE_RCBR, DE_EQL , DE_HASH,       DE_LABK, DE_RABK, DE_QUES, DE_EXLM, XXXXXXX,
+        DE_DQUO, DE_LPRN, DE_RPRN, DE_MINS, DE_SLSH,       DE_AT,   OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
+        DE_GRV,  DE_LCBR, DE_RCBR, DE_EQL,  DE_HASH,       DE_LABK, DE_RABK, DE_QUES, DE_EXLM, XXXXXXX,
                           _______, _______, _______,       OS_SHFT, XXXXXXX, XXXXXXX
     ),
     [_NUM] = LAYOUT_split_3x5_3(
@@ -362,9 +348,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         XXXXXXX,  KC_F1,  KC_F2,   KC_F3,   KC_F10,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                           _______, _______, _______,       XXXXXXX, _______, XXXXXXX
     )
+
     // clang-format on
 };
-
 
 bool is_oneshot_cancel_key(uint16_t keycode) {
     switch (keycode) {
@@ -427,6 +413,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         &os_cmd_state, KC_LCMD, OS_CMD,
         keycode, record
     );
+
+    // Additional processing logic for sending strings
+    switch (keycode) {
+        case SS_HELL:
+            if (record->event.pressed) {
+                SEND_STRING("Hello, world!\n");
+            }
+            return false;
+        case SS_MAIL:
+            if (record->event.pressed) {
+                SEND_STRING("mail@mail.com");
+            }
+            return false;
+    }
 
     return true;
 }
