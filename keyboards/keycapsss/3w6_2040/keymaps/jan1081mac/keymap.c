@@ -269,12 +269,13 @@
 #define SPC_R A(G(KC_RGHT)) // ?
 
 
-// Layer Modifiers
+// --- Layer Modifiers
+#define LA_NAV MO(_NAV)
 #define LA_SYM MO(_SYM)
 #define LA_NUM MO(_NUM)
-#define LA_NAV MO(_NAV)
+#define LA_FNU MO(_FNU)
 
-// Mac Shortcuts (from: https://github.com/bsag/qmk_custom/blob/main/mini3x5/keycodes.h#L25)
+// --- Mac Shortcuts (from: https://github.com/bsag/qmk_custom/blob/main/mini3x5/keycodes.h#L25)
 #define M_UNDO G(DE_Z)
 #define M_CUT  G(DE_X)
 #define M_COPY G(DE_C)
@@ -289,7 +290,8 @@
 // #define W_L A(KC_LEFT)      // move word left
 // #define W_R A(KC_RIGHT)     // move word right
 // #define LAU LGUI(KC_SPC)    // launcher (cmd+spc)
-
+#define M_RCAST G(KC_SPC) // Raycast 
+#define M_RGPT  G(DE_DOT) // Raycast GPT
 
 enum layers {
     _DEF,
@@ -311,39 +313,54 @@ enum keycodes {
     SW_LANG, // Switch to next input language (ctl-spc) --> TODO delete
 };
 
+
+// --- Send Strings
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    switch (keycode) {
+        case SS_HELL:
+            if (record->event.pressed) {
+                SEND_STRING("Hello, world!\n");
+            }
+            return false;
+    }
+
+    return true;
+}
+
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
     // clang-format off
 
     [_DEF] = LAYOUT_split_3x5_3(
-        DE_Q,    DE_W,    DE_F,    DE_P,    DE_B,          DE_J,    DE_L,    DE_U,    DE_Y,    SW_WIN,
+        DE_Q,    DE_W,    DE_F,    DE_P,    DE_B,          DE_J,    DE_L,    DE_U,    DE_Y,    XXXXXXX,
         DE_A,    DE_R,    DE_S,    DE_T,    DE_G,          DE_M,    DE_N,    DE_E,    DE_I,    DE_O,
         DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,          DE_K,    DE_H,    DE_COMM, DE_DOT,  DE_UNDS,
                           LA_SYM,  LA_NUM,  LA_NAV,        OS_SHFT, KC_SPC,  KC_BSPC
     ),
     [_NAV] = LAYOUT_split_3x5_3(
-        KC_PSCR, HOME,    KC_UP,   END,     KC_ESC,        HOME,    KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX,
-        M_FIND,  KC_LEFT, KC_DOWN, KC_RGHT, KC_TAB,        M_UNDO,  OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
-        M_SELA,  M_CUT  , M_COPY,  M_PSTE,  KC_ENT,        M_SAVE,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                          _______, _______, _______,       XXXXXXX, XXXXXXX, KC_DEL
+        KC_PSCR, xxxxxxx, xxxxxxx, xxxxxxx, KC_ESC,        XXXXXXX, HOME,    KC_UP,   END,     XXXXXXX,
+        OS_ALT,  OS_CTRL, OS_CMD,  OS_SHFT, KC_TAB,        SW_WIN,  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,
+        M_SELA,  M_CUT  , M_COPY,  M_PSTE,  KC_ENT,        M_UNDO,  M_SAVE,  M_FIND,  XXXXXXX, M_RGPT,
+                          _______, _______, _______,       OS_SHFT, M_RCAST, KC_DEL
     ),
     [_SYM] = LAYOUT_split_3x5_3(
         DE_QUOT, DE_LBRC, DE_RBRC, DE_PLUS, DE_ASTR,       DE_TILD, DE_BSLS, DE_PIPE, DE_AMPR, XXXXXXX,
         DE_DQUO, DE_LPRN, DE_RPRN, DE_MINS, DE_SLSH,       DE_AT  , OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
         DE_GRV , DE_LCBR, DE_RCBR, DE_EQL , DE_HASH,       DE_LABK, DE_RABK, DE_QUES, DE_EXLM, XXXXXXX,
-                          _______, _______, _______,       XXXXXXX, XXXXXXX, XXXXXXX
+                          _______, _______, _______,       OS_SHFT, XXXXXXX, XXXXXXX
     ),
     [_NUM] = LAYOUT_split_3x5_3(
         XXXXXXX,  DE_7,   DE_8,    DE_9,    DE_COMM,       DE_SECT, DE_ADIA, DE_UDIA, DE_ODIA, DE_SS,
         XXXXXXX,  DE_4,   DE_5,    DE_6,    DE_0,          DE_CIRC, OS_SHFT, OS_CMD,  OS_CTRL, OS_ALT,
         XXXXXXX,  DE_1,   DE_2,    DE_3,    DE_DOT,        DE_DLR,  DE_EURO, DE_PERC, DE_DEG,  DE_MICR,
-                          _______, _______, _______,       OS_SHFT, XXXXXXX, XXXXXXX
+                          _______, _______, _______,       OS_SHFT, LA_FNU,  XXXXXXX
     ),
     [_FNU] = LAYOUT_split_3x5_3(
-        XXXXXXX,  KC_F7,  KC_F8,   KC_F9,   KC_F12,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX,  KC_F4,  KC_F5,   KC_F6,   KC_F11,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+        XXXXXXX,  KC_F7,  KC_F8,   KC_F9,   KC_F12,        XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX,
+        XXXXXXX,  KC_F4,  KC_F5,   KC_F6,   KC_F11,        XXXXXXX, SS_HELL, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX,  KC_F1,  KC_F2,   KC_F3,   KC_F10,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                          _______, _______, _______,       XXXXXXX, XXXXXXX, XXXXXXX
+                          _______, _______, _______,       XXXXXXX, _______, XXXXXXX
     )
     // clang-format on
 };
