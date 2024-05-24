@@ -272,10 +272,10 @@
 #define M_SYM MO(_MAC_SYM)
 #define M_NUM MO(_MAC_NUM)
 #define M_FNU MO(_MAC_FNU)
-#define W_NAV MO(_WIN_NAV) // Layer WIN
-#define W_SYM MO(_WIN_SYM)
-#define W_NUM MO(_WIN_NUM)
-#define W_FNU MO(_WIN_FNU)
+// #define W_NAV MO(_WIN_NAV) // Layer WIN
+// #define W_SYM MO(_WIN_SYM)
+// #define W_NUM MO(_WIN_NUM)
+// #define W_FNU MO(_WIN_FNU)
 
 // --- Mac specific shortcuts start with "M_" (from: https://github.com/bsag/qmk_custom/blob/main/mini3x5/keycodes.h#L25)
 #define M_UNDO  G(DE_Z)
@@ -298,26 +298,26 @@
 
 
 // --- Windows specific shortcuts start with "W_" (from:
-#define W_UNDO  C(DE_Z)
-#define W_CUT   C(DE_X)
-#define W_COPY  C(DE_C)
-#define W_PSTE  C(DE_V)
-#define W_SELA  C(DE_A)
-#define W_FIND  C(DE_F)
-#define W_SAVE  C(DE_S)
+// #define W_UNDO  C(DE_Z)
+// #define W_CUT   C(DE_X)
+// #define W_COPY  C(DE_C)
+// #define W_PSTE  C(DE_V)
+// #define W_SELA  C(DE_A)
+// #define W_FIND  C(DE_F)
+// #define W_SAVE  C(DE_S)
 // --- different from mac keys
-#define W_SUP2 ALGR(DE_2)    // ²
-#define W_SUP3 ALGR(DE_3)    // ³
-#define W_LCBR ALGR(DE_7)    // {
-#define W_LBRC ALGR(DE_8)    // [
-#define W_RBRC ALGR(DE_9)    // ]
-#define W_RCBR ALGR(DE_0)    // }
-#define W_BSLS ALGR(DE_SS)   // (backslash)
-#define W_AT   ALGR(DE_Q)    // @
-#define W_EURO ALGR(DE_E)    // €
-#define W_TILD ALGR(DE_PLUS) // ~
-#define W_PIPE ALGR(DE_LABK) // |
-#define W_MICR ALGR(DE_M)    // µ
+// #define W_SUP2 ALGR(DE_2)    // ²
+// #define W_SUP3 ALGR(DE_3)    // ³
+// #define W_LCBR ALGR(DE_7)    // {
+// #define W_LBRC ALGR(DE_8)    // [
+// #define W_RBRC ALGR(DE_9)    // ]
+// #define W_RCBR ALGR(DE_0)    // }
+// #define W_BSLS ALGR(DE_SS)   // (backslash)
+// #define W_AT   ALGR(DE_Q)    // @
+// #define W_EURO ALGR(DE_E)    // €
+// #define W_TILD ALGR(DE_PLUS) // ~
+// #define W_PIPE ALGR(DE_LABK) // |
+// #define W_MICR ALGR(DE_M)    // µ
 
 
 
@@ -325,13 +325,13 @@ enum layers {
     _MAC_DEF, // Default Layer for Mac
     _MAC_NAV,
     _MAC_SYM,
-    _WIN_NUM,
-    _MAC_FNU,
-    _WIN_DEF, // Default Layer for Windows
-    _WIN_NAV,
-    _WIN_SYM,
     _MAC_NUM,
-    _WIN_FNU,
+    _MAC_FNU,
+    // _WIN_DEF, // Default Layer for Windows
+    // _WIN_NAV,
+    // _WIN_SYM,
+    // _WIN_NUM,
+    // _WIN_FNU,
 };
 
 
@@ -379,43 +379,43 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                           _______, _______, _______,       OS_SHFT, M_FNU,  XXXXXXX
     ),
     [_MAC_FNU] = LAYOUT_split_3x5_3(
-        XXXXXXX,  KC_F7,  KC_F8,   KC_F9,   KC_F12,        XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, DF(_WIN_DEF),
+        XXXXXXX,  KC_F7,  KC_F8,   KC_F9,   KC_F12,        XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, XXXXXXX, //DF(_WIN_DEF),
         XXXXXXX,  KC_F4,  KC_F5,   KC_F6,   KC_F11,        XXXXXXX, SS_HELL, XXXXXXX, XXXXXXX, XXXXXXX,
         XXXXXXX,  KC_F1,  KC_F2,   KC_F3,   KC_F10,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
                           _______, _______, _______,       XXXXXXX, _______, XXXXXXX
     ),
 
-    // WINDOWS LAYOUT
-    [_WIN_DEF] = LAYOUT_split_3x5_3(
-        DE_Q,    DE_W,    DE_F,    DE_P,    DE_B,          DE_J,    DE_L,    DE_U,    DE_Y,    XXXXXXX,
-        DE_A,    DE_R,    DE_S,    DE_T,    DE_G,          DE_M,    DE_N,    DE_E,    DE_I,    DE_O,
-        DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,          DE_K,    DE_H,    DE_COMM, DE_DOT,  DE_UNDS,
-                          W_SYM,   W_NUM,   W_NAV,         OS_SHFT, KC_SPC,  KC_BSPC
-    ),
-    [_WIN_NAV] = LAYOUT_split_3x5_3(
-        KC_PSCR, XXXXXXX, XXXXXXX, XXXXXXX, KC_ESC,        XXXXXXX, HOME,    KC_UP,   END,     XXXXXXX,
-        OS_CMD,  OS_ALT,  OS_CTRL,  OS_SHFT, KC_TAB,        SW_WIN,  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,
-        W_SELA,  W_CUT,   W_COPY,  W_PSTE,  KC_ENT,        W_UNDO,  W_SAVE,  W_FIND,  XXXXXXX, XXXXXXX,
-                          _______, _______, _______,       OS_SHFT, XXXXXXX, KC_DEL
-    ),
-    [_WIN_SYM] = LAYOUT_split_3x5_3(
-        DE_QUOT, W_LBRC,  W_RBRC,  DE_PLUS, DE_ASTR,       W_TILD,  W_BSLS,  W_PIPE,  DE_AMPR, XXXXXXX,
-        DE_DQUO, DE_LPRN, DE_RPRN, DE_MINS, DE_SLSH,       W_AT,    OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,
-        DE_GRV,  W_LCBR,  W_RCBR,  DE_EQL,  DE_HASH,       DE_LABK, DE_RABK, DE_QUES, DE_EXLM, XXXXXXX,
-                          _______, _______, _______,       OS_SHFT, XXXXXXX, XXXXXXX
-    ),
-    [_WIN_NUM] = LAYOUT_split_3x5_3(
-        W_SUP3,   DE_7,   DE_8,    DE_9,    DE_COMM,       DE_SECT, DE_ADIA, DE_UDIA, DE_ODIA, DE_SS,
-        W_SUP2,   DE_4,   DE_5,    DE_6,    DE_0,          DE_CIRC, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,
-        XXXXXXX,  DE_1,   DE_2,    DE_3,    DE_DOT,        DE_DLR,  W_EURO,  DE_PERC, DE_DEG,  W_MICR,
-                          _______, _______, _______,       OS_SHFT, W_FNU,   XXXXXXX
-    ),
-    [_WIN_FNU] = LAYOUT_split_3x5_3(
-        XXXXXXX,  KC_F7,  KC_F8,   KC_F9,   KC_F12,        XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, DF(_MAC_DEF),
-        XXXXXXX,  KC_F4,  KC_F5,   KC_F6,   KC_F11,        XXXXXXX, SS_HELL, XXXXXXX, XXXXXXX, XXXXXXX,
-        XXXXXXX,  KC_F1,  KC_F2,   KC_F3,   KC_F10,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
-                          _______, _______, _______,       XXXXXXX, _______, XXXXXXX
-    )
+    // // WINDOWS LAYOUT
+    // [_WIN_DEF] = LAYOUT_split_3x5_3(
+    //     DE_Q,    DE_W,    DE_F,    DE_P,    DE_B,          DE_J,    DE_L,    DE_U,    DE_Y,    XXXXXXX,
+    //     DE_A,    DE_R,    DE_S,    DE_T,    DE_G,          DE_M,    DE_N,    DE_E,    DE_I,    DE_O,
+    //     DE_Z,    DE_X,    DE_C,    DE_D,    DE_V,          DE_K,    DE_H,    DE_COMM, DE_DOT,  DE_UNDS,
+    //                       W_SYM,   W_NUM,   W_NAV,         OS_SHFT, KC_SPC,  KC_BSPC
+    // ),
+    // [_WIN_NAV] = LAYOUT_split_3x5_3(
+    //     KC_PSCR, XXXXXXX, XXXXXXX, XXXXXXX, KC_ESC,        XXXXXXX, HOME,    KC_UP,   END,     XXXXXXX,
+    //     OS_CMD,  OS_ALT,  OS_CTRL,  OS_SHFT, KC_TAB,        SW_WIN,  KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX,
+    //     W_SELA,  W_CUT,   W_COPY,  W_PSTE,  KC_ENT,        W_UNDO,  W_SAVE,  W_FIND,  XXXXXXX, XXXXXXX,
+    //                       _______, _______, _______,       OS_SHFT, XXXXXXX, KC_DEL
+    // ),
+    // [_WIN_SYM] = LAYOUT_split_3x5_3(
+    //     DE_QUOT, W_LBRC,  W_RBRC,  DE_PLUS, DE_ASTR,       W_TILD,  W_BSLS,  W_PIPE,  DE_AMPR, XXXXXXX,
+    //     DE_DQUO, DE_LPRN, DE_RPRN, DE_MINS, DE_SLSH,       W_AT,    OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,
+    //     DE_GRV,  W_LCBR,  W_RCBR,  DE_EQL,  DE_HASH,       DE_LABK, DE_RABK, DE_QUES, DE_EXLM, XXXXXXX,
+    //                       _______, _______, _______,       OS_SHFT, XXXXXXX, XXXXXXX
+    // ),
+    // [_WIN_NUM] = LAYOUT_split_3x5_3(
+    //     W_SUP3,   DE_7,   DE_8,    DE_9,    DE_COMM,       DE_SECT, DE_ADIA, DE_UDIA, DE_ODIA, DE_SS,
+    //     W_SUP2,   DE_4,   DE_5,    DE_6,    DE_0,          DE_CIRC, OS_SHFT, OS_CTRL, OS_ALT,  OS_CMD,
+    //     XXXXXXX,  DE_1,   DE_2,    DE_3,    DE_DOT,        DE_DLR,  W_EURO,  DE_PERC, DE_DEG,  W_MICR,
+    //                       _______, _______, _______,       OS_SHFT, W_FNU,   XXXXXXX
+    // ),
+    // [_WIN_FNU] = LAYOUT_split_3x5_3(
+    //     XXXXXXX,  KC_F7,  KC_F8,   KC_F9,   KC_F12,        XXXXXXX, KC_MUTE, KC_VOLD, KC_VOLU, DF(_MAC_DEF),
+    //     XXXXXXX,  KC_F4,  KC_F5,   KC_F6,   KC_F11,        XXXXXXX, SS_HELL, XXXXXXX, XXXXXXX, XXXXXXX,
+    //     XXXXXXX,  KC_F1,  KC_F2,   KC_F3,   KC_F10,        XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
+    //                       _______, _______, _______,       XXXXXXX, _______, XXXXXXX
+    // )
 
     // clang-format on
 };
@@ -425,9 +425,9 @@ bool is_oneshot_cancel_key(uint16_t keycode) {
     case M_NAV: // Mac
     case M_SYM:
     case M_NUM:
-    case W_NAV: // Win
-    case W_SYM:
-    case W_NUM:
+    // case W_NAV: // Win
+    // case W_SYM:
+    // case W_NUM:
         return true;
     default:
         return false;
@@ -439,9 +439,9 @@ bool is_oneshot_ignored_key(uint16_t keycode) {
     case M_NAV: // Mac
     case M_SYM:
     case M_NUM:
-    case W_NAV: // Win
-    case W_SYM:
-    case W_NUM:
+    // case W_NAV: // Win
+    // case W_SYM:
+    // case W_NUM:
     case KC_LSFT:
     case OS_SHFT:
     case OS_CTRL:
@@ -502,16 +502,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             return false;
 
         // --- Switching default layers
-        case DF(_MAC_DEF):
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(_MAC_DEF);
-            }
-            return false;
-        case DF(_WIN_DEF):
-            if (record->event.pressed) {
-                set_single_persistent_default_layer(_WIN_DEF);
-            }
-            return false;
+        // case DF(_MAC_DEF):
+        //     if (record->event.pressed) {
+        //         set_single_persistent_default_layer(_MAC_DEF);
+        //     }
+        //     return false;
+        // case DF(_WIN_DEF):
+        //     if (record->event.pressed) {
+        //         set_single_persistent_default_layer(_WIN_DEF);
+        //     }
+        //     return false;
     }
 
     return true;
@@ -520,4 +520,4 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // --- not yet used:
 // layer_state_t layer_state_set_user(layer_state_t state) {
 //     return update_tri_layer_state(state, _NAV, _SYM, _FNU);
-// }
+// }a
