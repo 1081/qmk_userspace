@@ -2,7 +2,7 @@
     "userspace_version": "1.0",
     "build_targets": [
         [
-            "3w6_2040",
+            "3w6",
             "jan1081mac"
         ]
     ]
