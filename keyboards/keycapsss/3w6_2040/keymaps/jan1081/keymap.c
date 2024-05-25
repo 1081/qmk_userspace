@@ -1,7 +1,6 @@
 // HOWTO COMPILE FIRMWARE LOCAL:
 // qmk compile -kb keycapsss/3w6_2040 -km jan1081
 
-
 // LINKS:
 // --> Keycodes:                      https://docs.qmk.fm/#/keycodes
 // --> Basic Keycodes:                https://docs.qmk.fm/#/keycodes_basic
@@ -10,15 +9,12 @@
 // --> Callum style layer (original): https://github.com/qmk/qmk_firmware/blob/user-keymaps-still-present/users/callum/callum.c
 // --> Callum style layer (36 key):   https://github.com/braindefender/wellum
 
-
 #include QMK_KEYBOARD_H
 #include "oneshot.h"
 #include "swapper.h"
 
-
 #include "keymap_german_mac_iso.h" // MAC LAYOUT
 // #include "keymap_german.h"      // WIN LAYOUT
-
 
 // Windows keys that different from Mac start with "W_"
 #define W_SUP2 ALGR(DE_2)    // ²
@@ -28,25 +24,24 @@
 #define W_LBRC ALGR(DE_8)    // [
 #define W_RBRC ALGR(DE_9)    // ]
 #define W_BSLS ALGR(DE_SS)   // (backslash)
-#define W_AT   ALGR(DE_Q)    // @
+#define W_AT ALGR(DE_Q)      // @
 #define W_EURO ALGR(DE_E)    // €
 #define W_TILD ALGR(DE_PLUS) // ~
 #define W_PIPE ALGR(DE_LABK) // |
 #define W_MICR ALGR(DE_M)    // µ
 
-
 // MacOS shortcuts start with "M_":
-#define M_UNDO  G(DE_Z)
-#define M_CUT   G(DE_X)
-#define M_COPY  G(DE_C)
-#define M_PSTE  G(DE_V)
-#define M_SELA  G(DE_A)
-#define M_FIND  G(DE_F)
-#define M_SAVE  G(DE_S)
-#define M_RCAST G(KC_SPC)      // Raycast
-#define M_RGPT  G(DE_DOT)      // Raycast GPT
-#define HOME    G(KC_LEFT)     // moving the cursor to the beginning of the line
-#define END     G(KC_RGHT)     // moving the cursor to the end of the line
+#define M_UNDO G(DE_Z)
+#define M_CUT G(DE_X)
+#define M_COPY G(DE_C)
+#define M_PSTE G(DE_V)
+#define M_SELA G(DE_A)
+#define M_FIND G(DE_F)
+#define M_SAVE G(DE_S)
+#define M_RCAST G(KC_SPC) // Raycast
+#define M_RGPT G(DE_DOT)  // Raycast GPT
+#define HOME G(KC_LEFT)   // moving the cursor to the beginning of the line
+#define END G(KC_RGHT)    // moving the cursor to the end of the line
 // #define FWD   G(KC_RBRC)    // browser forward in history
 // #define BACK  G(KC_LBRC)    // browser back in history
 // #define TABL  G(S(KC_LBRC)) // ?
@@ -61,16 +56,14 @@
 // #define W_R A(KC_RIGHT)     // move word right
 // #define LAU LGUI(KC_SPC)    // launcher (cmd+spc)
 
-
 // Windows specific shortcuts start with "W_" (from:
-#define W_UNDO  C(DE_Z)
-#define W_CUT   C(DE_X)
-#define W_COPY  C(DE_C)
-#define W_PSTE  C(DE_V)
-#define W_SELA  C(DE_A)
-#define W_FIND  C(DE_F)
-#define W_SAVE  C(DE_S)
-
+#define W_UNDO C(DE_Z)
+#define W_CUT C(DE_X)
+#define W_COPY C(DE_C)
+#define W_PSTE C(DE_V)
+#define W_SELA C(DE_A)
+#define W_FIND C(DE_F)
+#define W_SAVE C(DE_S)
 
 // Layer Modifiers:
 #define M_NAV MO(_MAC_NAV) // Layer MAC
@@ -81,7 +74,6 @@
 #define W_SYM MO(_WIN_SYM)
 #define W_NUM MO(_WIN_NUM)
 #define W_FNU MO(_WIN_FNU)
-
 
 // LAYERS:
 enum layers {
@@ -101,7 +93,6 @@ enum layers {
     _WIN_FNU,
 };
 
-
 enum keycodes {
     // Custom oneshot mod implementation with no timers
     OS_SHFT = SAFE_RANGE,
@@ -116,7 +107,6 @@ enum keycodes {
     SS_HELL,
     SS_MAIL,
 };
-
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
@@ -186,34 +176,34 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool is_oneshot_cancel_key(uint16_t keycode) {
     switch (keycode) {
-    case M_NAV: // Mac
-    case M_SYM:
-    case M_NUM:
-    case W_NAV: // Win
-    case W_SYM:
-    case W_NUM:
-        return true;
-    default:
-        return false;
+        case M_NAV: // Mac
+        case M_SYM:
+        case M_NUM:
+        case W_NAV: // Win
+        case W_SYM:
+        case W_NUM:
+            return true;
+        default:
+            return false;
     }
 }
 
 bool is_oneshot_ignored_key(uint16_t keycode) {
     switch (keycode) {
-    case M_NAV:   // Mac
-    case M_SYM:
-    case M_NUM:
-    case W_NAV:   // Win
-    case W_SYM:
-    case W_NUM:
-    case KC_LSFT: // Normal Shift
-    case OS_SHFT: // One Shot Shift
-    case OS_CTRL:
-    case OS_ALT:
-    case OS_CMD:
-        return true;
-    default:
-        return false;
+        case M_NAV: // Mac
+        case M_SYM:
+        case M_NUM:
+        case W_NAV: // Win
+        case W_SYM:
+        case W_NUM:
+        case KC_LSFT: // Normal Shift
+        case OS_SHFT: // One Shot Shift
+        case OS_CTRL:
+        case OS_ALT:
+        case OS_CMD:
+            return true;
+        default:
+            return false;
     }
 }
 
@@ -225,28 +215,12 @@ oneshot_state os_alt_state  = os_up_unqueued;
 oneshot_state os_cmd_state  = os_up_unqueued;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    update_swapper(
-        &sw_win_active, KC_LGUI, KC_TAB, SW_WIN,
-        keycode, record
-    );
-    update_oneshot(
-        &os_shft_state, KC_LSFT, OS_SHFT,
-        keycode, record
-    );
-    update_oneshot(
-        &os_ctrl_state, KC_LCTL, OS_CTRL,
-        keycode, record
-    );
-    update_oneshot(
-        &os_alt_state, KC_LALT, OS_ALT,
-        keycode, record
-    );
-    update_oneshot(
-        &os_cmd_state, KC_LCMD, OS_CMD,
-        keycode, record
-    );
+    update_swapper(&sw_win_active, KC_LGUI, KC_TAB, SW_WIN, keycode, record);
+    update_oneshot(&os_shft_state, KC_LSFT, OS_SHFT, keycode, record);
+    update_oneshot(&os_ctrl_state, KC_LCTL, OS_CTRL, keycode, record);
+    update_oneshot(&os_alt_state, KC_LALT, OS_ALT, keycode, record);
+    update_oneshot(&os_cmd_state, KC_LCMD, OS_CMD, keycode, record);
     switch (keycode) {
-
         // Additional processing logic for sending strings
         case SS_HELL:
             if (record->event.pressed) {
@@ -263,19 +237,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case DF(_MAC_DEF):
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_MAC_DEF);
-                layer_state_set(1<<_MAC_DEF);
+                layer_state_set(1 << _MAC_DEF);
             }
             return false;
         case DF(_WIN_DEF):
             if (record->event.pressed) {
                 set_single_persistent_default_layer(_WIN_DEF);
-                layer_state_set(1<<_WIN_DEF);
+                layer_state_set(1 << _WIN_DEF);
             }
             return false;
     }
     return true;
+    
 }
-
 
 // --- RGB LIGHTING ------------------------------
 
@@ -299,34 +273,20 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // HSV_MAGENTA     213, 255, 255 *
 // HSV_PINK        234, 128, 255
 
+const rgblight_segment_t PROGMEM LED_MAC_DEF[] = RGBLIGHT_LAYER_SEGMENTS({0, 1, 170, 255, 50} // HSV_BLUE darker
+);
+const rgblight_segment_t PROGMEM LED_WIN_DEF[] = RGBLIGHT_LAYER_SEGMENTS({0, 1, 0, 255, 50} // HSV_RED darker
+);
+const rgblight_segment_t PROGMEM LED_NAV[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 36, 255, 50} // HSV_GOLD darker
+    );
+const rgblight_segment_t PROGMEM LED_SYM[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 191, 255, 50} // HSV_PURPLE darker
+    );
+const rgblight_segment_t PROGMEM LED_NUM[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 85, 255, 50} // HSV_GREEN darker
+    );
+const rgblight_segment_t PROGMEM LED_FNU[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 213, 255, 50} // HSV_MAGENTA darker
+    );
 
-const rgblight_segment_t PROGMEM LED_MAC_DEF[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 170, 255, 50} // HSV_BLUE darker
-);
-const rgblight_segment_t PROGMEM LED_WIN_DEF[] = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 0,   255, 50} // HSV_RED darker
-);
-const rgblight_segment_t PROGMEM LED_NAV[]     = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 36,  255, 50} // HSV_GOLD darker
-);
-const rgblight_segment_t PROGMEM LED_SYM[]     = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 191, 255, 50} // HSV_PURPLE darker
-);
-const rgblight_segment_t PROGMEM LED_NUM[]     = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 85,  255, 50} // HSV_GREEN darker
-);
-const rgblight_segment_t PROGMEM LED_FNU[]     = RGBLIGHT_LAYER_SEGMENTS(
-    {0, 1, 213, 255, 50} // HSV_MAGENTA darker
-);
-
-const rgblight_segment_t* const PROGMEM my_led_layers[] = RGBLIGHT_LAYERS_LIST(
-    LED_MAC_DEF,
-    LED_WIN_DEF,
-    LED_NAV,
-    LED_SYM,
-    LED_NUM,
-    LED_FNU
-);
+const rgblight_segment_t *const PROGMEM my_led_layers[] = RGBLIGHT_LAYERS_LIST(LED_MAC_DEF, LED_WIN_DEF, LED_NAV, LED_SYM, LED_NUM, LED_FNU);
 
 void keyboard_post_init_user(void) {
     rgblight_layers = my_led_layers; // Enable the LED layers
@@ -351,7 +311,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 
-
 // --- PUFFER ------------------------------
 
 // --- RESET EEPROM (persistent storage, also after flashing a new firmware) for default layer:
@@ -365,7 +324,6 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 //     }
 //     return true;
 // }
-
 
 // --- TRI LAYER not used:
 // layer_state_t layer_state_set_user(layer_state_t state) {
