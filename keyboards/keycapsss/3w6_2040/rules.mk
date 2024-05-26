@@ -1,3 +1,4 @@
 SERIAL_DRIVER = vendor
 POINTING_DEVICE_DRIVER = pimoroni_trackball
 BOOTLOADER = rp2040
+RGBLIGHT_ENABLE = yes
