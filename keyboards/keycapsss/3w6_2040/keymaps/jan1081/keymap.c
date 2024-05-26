@@ -272,8 +272,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // HSV_MAGENTA     213, 255, 255 *
 // HSV_PINK        234, 128, 255
 
-const rgblight_segment_t PROGMEM, LED_MAC_DEF[] = RGBLIGHT_LAYER_SEGMENTS({0, 10, HSV_YELLOW} // HSV_BLUE darker
-                                  );
+const rgblight_segment_t PROGMEM LED_MAC_DEF[] = RGBLIGHT_LAYER_SEGMENTS({0, 10, HSV_YELLOW});
 // const rgblight_segment_t PROGMEM LED_WIN_DEF[] = RGBLIGHT_LAYER_SEGMENTS({0, 1, 0, 255, 50} // HSV_RED darker
 // );
 // const rgblight_segment_t PROGMEM LED_NAV[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 36, 255, 50} // HSV_GOLD darker
