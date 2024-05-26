@@ -272,28 +272,42 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // HSV_MAGENTA     213, 255, 255 *
 // HSV_PINK        234, 128, 255
 
-const rgblight_segment_t PROGMEM LED_MAC_DEF[] = RGBLIGHT_LAYER_SEGMENTS({0, 1, 170, 255, 50} // HSV_BLUE darker
-);
-const rgblight_segment_t PROGMEM LED_WIN_DEF[] = RGBLIGHT_LAYER_SEGMENTS({0, 1, 0, 255, 50} // HSV_RED darker
-);
-const rgblight_segment_t PROGMEM LED_NAV[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 36, 255, 50} // HSV_GOLD darker
-    );
-const rgblight_segment_t PROGMEM LED_SYM[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 191, 255, 50} // HSV_PURPLE darker
-    );
-const rgblight_segment_t PROGMEM LED_NUM[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 85, 255, 50} // HSV_GREEN darker
-    );
-const rgblight_segment_t PROGMEM LED_FNU[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 213, 255, 50} // HSV_MAGENTA darker
-    );
+// const rgblight_segment_t PROGMEM LED_MAC_DEF[] = RGBLIGHT_LAYER_SEGMENTS({0, 1, 170, 255, 50} // HSV_BLUE darker
+// );
+// const rgblight_segment_t PROGMEM LED_WIN_DEF[] = RGBLIGHT_LAYER_SEGMENTS({0, 1, 0, 255, 50} // HSV_RED darker
+// );
+// const rgblight_segment_t PROGMEM LED_NAV[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 36, 255, 50} // HSV_GOLD darker
+//     );
+// const rgblight_segment_t PROGMEM LED_SYM[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 191, 255, 50} // HSV_PURPLE darker
+//     );
+// const rgblight_segment_t PROGMEM LED_NUM[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 85, 255, 50} // HSV_GREEN darker
+//     );
+// const rgblight_segment_t PROGMEM LED_FNU[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 213, 255, 50} // HSV_MAGENTA darker
+//     );
 
-const rgblight_segment_t *const PROGMEM my_led_layers[] = RGBLIGHT_LAYERS_LIST(LED_MAC_DEF, LED_WIN_DEF, LED_NAV, LED_SYM, LED_NUM, LED_FNU);
+// const rgblight_segment_t *const PROGMEM my_led_layers[] = RGBLIGHT_LAYERS_LIST(LED_MAC_DEF, LED_WIN_DEF, LED_NAV, LED_SYM, LED_NUM, LED_FNU);
 
-void keyboard_post_init_user(void) {
-    rgblight_layers = my_led_layers; // Enable the LED layers
-}
+// void keyboard_post_init_user(void) {
+//     rgblight_layers = my_led_layers; // Enable the LED layers
+// }
 
 // bool led_update_user(led_t led_state) {
 //     rgblight_set_layer_state(0, led_state.caps_lock);
 //     return true;
+// }
+
+// layer_state_t default_layer_state_set_user(layer_state_t state) {
+//     rgblight_set_layer_state(0, layer_state_cmp(state, _MAC_DEF));
+//     rgblight_set_layer_state(1, layer_state_cmp(state, _WIN_DEF));
+//     return state;
+// }
+
+// layer_state_t layer_state_set_user(layer_state_t state) {
+//     rgblight_set_layer_state(2, layer_state_cmp(state, _MAC_NAV) || layer_state_cmp(state, _WIN_NAV));
+//     rgblight_set_layer_state(3, layer_state_cmp(state, _MAC_NUM) || layer_state_cmp(state, _WIN_NUM));
+//     rgblight_set_layer_state(4, layer_state_cmp(state, _MAC_SYM) || layer_state_cmp(state, _WIN_SYM));
+//     rgblight_set_layer_state(5, layer_state_cmp(state, _MAC_FNU) || layer_state_cmp(state, _WIN_FNU));
+//     return state;
 // }
 
 // --- PUFFER ------------------------------
