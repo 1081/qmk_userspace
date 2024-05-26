@@ -272,18 +272,18 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 // HSV_MAGENTA     213, 255, 255 *
 // HSV_PINK        234, 128, 255
 
-const rgblight_segment_t PROGMEM LED_MAC_DEF[] = RGBLIGHT_LAYER_SEGMENTS({0, 1, 170, 255, 50} // HSV_BLUE darker
+const rgblight_segment_t PROGMEM LED_MAC_DEF[] = RGBLIGHT_LAYER_SEGMENTS({0, 1, HSV_YELLOW} // HSV_BLUE darker
 );
-const rgblight_segment_t PROGMEM LED_WIN_DEF[] = RGBLIGHT_LAYER_SEGMENTS({0, 1, 0, 255, 50} // HSV_RED darker
-);
-const rgblight_segment_t PROGMEM LED_NAV[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 36, 255, 50} // HSV_GOLD darker
-    );
-const rgblight_segment_t PROGMEM LED_SYM[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 191, 255, 50} // HSV_PURPLE darker
-    );
-const rgblight_segment_t PROGMEM LED_NUM[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 85, 255, 50} // HSV_GREEN darker
-    );
-const rgblight_segment_t PROGMEM LED_FNU[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 213, 255, 50} // HSV_MAGENTA darker
-    );
+// const rgblight_segment_t PROGMEM LED_WIN_DEF[] = RGBLIGHT_LAYER_SEGMENTS({0, 1, 0, 255, 50} // HSV_RED darker
+// );
+// const rgblight_segment_t PROGMEM LED_NAV[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 36, 255, 50} // HSV_GOLD darker
+//     );
+// const rgblight_segment_t PROGMEM LED_SYM[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 191, 255, 50} // HSV_PURPLE darker
+//     );
+// const rgblight_segment_t PROGMEM LED_NUM[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 85, 255, 50} // HSV_GREEN darker
+//     );
+// const rgblight_segment_t PROGMEM LED_FNU[]     = RGBLIGHT_LAYER_SEGMENTS({0, 1, 213, 255, 50} // HSV_MAGENTA darker
+//     );
 
 // const rgblight_segment_t *const PROGMEM my_led_layers[] = RGBLIGHT_LAYERS_LIST(LED_MAC_DEF, LED_WIN_DEF, LED_NAV, LED_SYM, LED_NUM, LED_FNU);
 
