@@ -296,20 +296,6 @@ void keyboard_post_init_user(void) {
 //     return true;
 // }
 
-layer_state_t default_layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(0, layer_state_cmp(state, _MAC_DEF));
-    rgblight_set_layer_state(1, layer_state_cmp(state, _WIN_DEF));
-    return state;
-}
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    rgblight_set_layer_state(2, layer_state_cmp(state, _MAC_NAV) || layer_state_cmp(state, _WIN_NAV));
-    rgblight_set_layer_state(3, layer_state_cmp(state, _MAC_NUM) || layer_state_cmp(state, _WIN_NUM));
-    rgblight_set_layer_state(4, layer_state_cmp(state, _MAC_SYM) || layer_state_cmp(state, _WIN_SYM));
-    rgblight_set_layer_state(5, layer_state_cmp(state, _MAC_FNU) || layer_state_cmp(state, _WIN_FNU));
-    return state;
-}
-
 // --- PUFFER ------------------------------
 
 // --- RESET EEPROM (persistent storage, also after flashing a new firmware) for default layer:
